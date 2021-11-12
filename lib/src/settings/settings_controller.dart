@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:home_beacon/src/models/locations/location.dart';
 
 import 'settings_service.dart';
 
@@ -26,7 +29,9 @@ class SettingsController with ChangeNotifier {
   /// settings from the service.
   Future<void> loadSettings() async {
     _themeMode = await _settingsService.themeMode();
-
+    final locaton =
+        BcUserLocation(lat: "lat", long: "long", dateTime: DateTime.now());
+    log(locaton.toJson().toString());
     // Important! Inform listeners a change has occurred.
     notifyListeners();
   }
